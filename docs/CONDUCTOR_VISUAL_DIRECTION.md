@@ -45,6 +45,34 @@ reference or animation handoff.
 - The Conductor does not flinch or stop conducting when hit; its animation and
   authored attack timeline continue uninterrupted.
 
+## Production-art source and migration
+
+The current approved Conductor artwork and motion studies are **reference canon**,
+not the final long-term editable production source.
+
+Future production raster art will be rebuilt into a canonical layered LibreSprite
+source while preserving the accepted character identity, wrist-core registration,
+Ictus motion/timing and conducting vocabulary.
+
+The intended migration is:
+
+1. preserve all accepted references and review labs
+2. reconstruct one canonical base pose with fixed scale, canvas, anchor, palette
+   and true transparency
+3. rebuild the approved Ictus sequence from that source without redesigning its
+   accepted motion
+4. compare old and rebuilt versions in the existing isolated labs
+5. after user approval, use the LibreSprite source for idle, continuity, Changing
+   Meter phrases and future whole-character animations
+
+Whole-character frame-by-frame 2D remains the production animation model. This is
+not a return to a modular rig.
+
+Baton-tip glow, attack arcs, barriers, particles and other suitable visual effects
+remain separate runtime effects rather than being baked into every character frame.
+
+See `MASTER_DESIGN.md` for the project-wide production-art workflow and handoff.
+
 ## Still open
 
 - Exact production-frame cleanup and final travel duration for the approved

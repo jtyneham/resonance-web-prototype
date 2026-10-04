@@ -1,5 +1,9 @@
 # Resonance prototype — agreed scope
 
+> **Document role:** This file describes the neutral combat prototype's concrete
+> scope and defaults. Stable project-wide decisions now live in
+> `MASTER_DESIGN.md`; if the two conflict, the master design takes precedence.
+
 This is the playable neutral combat prototype, not the finished three-boss game.
 The latest conversation takes precedence over the original desktop handoff.
 

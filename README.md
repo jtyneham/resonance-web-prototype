@@ -128,7 +128,8 @@ No secrets, backend, custom domain, or manually committed build folder are neede
 | `src/rendering/arena.ts`       | Procedural arena, boss, player, notes and effects       |
 | `src/main.ts`                  | Screens, inputs, lifecycle, fullscreen and HUD          |
 | `src/style.css`                | Portrait layout, menus, safe areas and touch controls   |
-| `PROTOTYPE_SPEC.md`            | Agreed scope and current tunable defaults               |
+| `MASTER_DESIGN.md`             | Stable project-wide design and production-art direction |
+| `PROTOTYPE_SPEC.md`            | Neutral prototype scope and tunable defaults            |
 | `IMPLEMENTATION_STATUS.md`     | Durable development and verification checkpoint         |
 
 Attack entries specify **impact beats**, lane, width, kind and travel time. Fast

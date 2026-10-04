@@ -1,5 +1,30 @@
 # Implementation status
 
+## Latest — production pixel-art pipeline handoff (2026-10-04)
+
+Created `MASTER_DESIGN.md` as Resonance's stable project-wide design spine and
+adopted a canonical LibreSprite production-art workflow for authored raster
+characters.
+
+This decision follows repeated Conductor frame-consistency problems in earlier
+generated artwork: anatomy/grip drift, baton geometry changes, registration
+mismatch, alpha/matte cleanup and unreliable in-betweens. Existing approved
+Conductor design, Ictus motion/timing, wrist-core registration, idle behavior and
+review labs remain reference canon; no approved gameplay or animation timing is
+being discarded.
+
+The production-art foundation will be rebuilt deliberately: approved reference →
+Codex production translation → layered LibreSprite source → runtime export →
+isolated animation-lab comparison → user approval. Whole-character frame-by-frame
+2D remains the animation model. Baton glow, attacks, particles and other suitable
+effects remain runtime effects.
+
+**Handoff:** the dedicated Resonance Master Design chat should read
+`MASTER_DESIGN.md` first and continue by planning the canonical Conductor
+LibreSprite base pose, followed by an Ictus reconstruction/side-by-side review.
+Do not expand production Conductor animation from inconsistent generated raster
+sources before that migration is evaluated.
+
 ## Latest — Changing Meter phrase and deployed dev archive (2026-09-19)
 
 Added `meter-phrase-lab.html`, the first continuous whole-hand five-beat phrase

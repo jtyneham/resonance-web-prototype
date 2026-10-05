@@ -1,153 +1,22 @@
 # Resonance
 
-**Five lanes. One spark. Strike the rhythm back.**
+**Production game project — Godot rebuild seed**
 
-A playable, portrait-first browser combat prototype. Survive an authored,
-music-driven dummy encounter, automatically absorb resonance waves, and land five counterattacks
-before the 45-second track ends. Built with TypeScript, Three.js, Vite and Web Audio.
+Resonance is a compact, difficult, music-driven five-lane boss-rush action game.
+Bosses physically perform the music at the player; attacks, animation, camera,
+effects and combat share an authoritative musical timeline.
 
-The dummy proves the shared combat system. The Conductor, The Prism and The Silence
-are planned future encounters; their final art, charts and music are not included yet.
+## Production targets
 
-## Play
+- Engine: Godot 4.x
+- Baseline at reset: Godot 4.7.2 stable
+- Language: GDScript
+- Primary platform: Android / Google Play
+- Secondary platform: Windows / Steam
+- Canonical combat geometry: portrait 9:16
+- Current workstream: Phase 0 — production reset / repository migration
 
-After the first successful GitHub Pages deployment:
-[jtyneham.github.io/resonance](https://jtyneham.github.io/resonance/).
+This branch is a **clean production seed**, not the old browser implementation.
+The TypeScript / Vite / Three.js build is preserved separately as prototype R&D.
 
-On the title screen, use **Fullscreen**, then **Start → Enter battle**.
-Open **Options + controls** first for the visual attack guide. Mobile gameplay is
-portrait only; rotating a touch device pauses the fight. Desktop keeps a centered
-portrait frame. Browser fullscreen and orientation locking are requested where
-supported; a rejected request never blocks normal browser play.
-
-| Action         | Touch          | Keyboard               |
-| -------------- | -------------- | ---------------------- |
-| Move one lane  | Left / Right   | ← / → or A / D         |
-| Jump           | Jump           | Space, W or ↑          |
-| Fire resonance | Resonate       | J, F or Enter          |
-| Pause / resume | Pause / Resume | Escape (P also pauses) |
-
-- Coral low waves: jump or sidestep.
-- Muted lime resonance waves: stay grounded in their lane to absorb automatically.
-- Ivory tall barriers: sidestep; they cannot be jumped or absorbed and block shots.
-- Two absorbs charge one shot. Tap Resonate in an opening to fire it.
-- One lane change per jump. A late second move is buffered until landing. Holding
-  movement does not repeat.
-- Three HP; damage empties charge. Five shots hitting the boss win; timeout loses.
-- Music and attacks pause together. Returning to the tab or portrait does not
-  resume a battle until you press Resume.
-
-Use speaker audio or wired headphones when checking timing; Bluetooth latency can
-make rhythm judgments harder. Volume and reduced motion are available in Options.
-
-## Run locally
-
-Install Node.js **22.12+** (Node 24 recommended), then:
-
-```sh
-npm ci
-npm run dev
-```
-
-Open the `/resonance/` URL printed by Vite. To preview exactly what Pages serves:
-
-```sh
-npm run build
-npm run preview
-```
-
-Open `http://localhost:4173/resonance/`. `dist` is generated output and is ignored by
-Git. Dependencies, build files and local test screenshots should not be committed.
-
-## Check the code
-
-### Isolated Conductor Ictus study
-
-Open `http://localhost:4173/resonance/conductor-lab.html` after building and
-starting the preview. This page plays the complete upright idle → preparation →
-fast strike → recovery → upright idle gesture. Nine drawings span one second,
-with the strike cue at 0.2 seconds. Play once, inspect at quarter speed, or scrub;
-the original artwork remains available through a toggle. This is a sparse motion
-study requiring visual review, not the finished smooth attack animation.
-The playable prototype is unchanged; Git retains earlier code.
-See the [study outcome](docs/bosses/conductor/rig-study.md) and the replacement
-[whole-hand clip direction](docs/bosses/conductor/animation-direction.md).
-
-### Automated checks
-
-```sh
-npm run check
-npm run format:check
-npm run test:e2e
-```
-
-`check` runs ESLint, Vitest, TypeScript and the production build. Browser tests run
-against the production build under `/resonance/`; run `npm run build` before them.
-By default they use installed Google Chrome. Use the `PLAYWRIGHT_CHANNEL=msedge`
-environment variable for Edge. On PowerShell:
-
-```powershell
-$env:PLAYWRIGHT_CHANNEL = 'msedge'
-npm run test:e2e
-Remove-Item Env:PLAYWRIGHT_CHANNEL
-```
-
-The browser suite covers settings, five lanes, multitouch, jump/move, pause,
-rotation, fullscreen, defeat/retry, desktop keyboard, small layouts and a complete
-victory with a persisted record. Its winning driver sends keyboard events using
-the visible song progress; there is no production invincibility or cheat API.
-Ignored screenshots and failure traces are written to `test-results/`.
-
-## Publish with GitHub Desktop
-
-1. In the repository's **Settings → Pages**, select **GitHub Actions** as the source.
-   Leave Custom domain blank.
-2. Review the local changes in GitHub Desktop. Use commit summary
-   **Build mobile-first Resonance prototype**.
-3. **Commit to main**, then **Push origin**.
-4. Open the repository's **Actions** tab. Wait for **Build and deploy Resonance**
-   to finish successfully.
-5. Open **Settings → Pages → Visit site** and test the game on your phone.
-
-The workflow installs the lockfile dependencies, runs code checks and formatting
-checks, builds `dist`, and deploys it. Pull requests run the build/check job without
-deploying. The Vite base path is `/resonance/`, as required by
-[Vite's GitHub Pages guide](https://vite.dev/guide/static-deploy#github-pages).
-No secrets, backend, custom domain, or manually committed build folder are needed.
-
-## Where to change things
-
-| File                           | Responsibility                                          |
-| ------------------------------ | ------------------------------------------------------- |
-| `src/game/config.ts`           | Shared player health, lanes, jump and shot tuning       |
-| `src/game/chart.ts`            | Shared attack types and timed-note shape                |
-| `src/game/encounter.ts`        | Encounter definition and timing/display helpers         |
-| `src/game/encounters/dummy.ts` | Original 120-beat Dummy chart, tempo, health and labels |
-| `src/game/battle.ts`           | Combat rules independent of graphics and browser APIs   |
-| `src/audio/transport.ts`       | Audio clock, synthesized track, sound effects           |
-| `src/rendering/arena.ts`       | Procedural arena, boss, player, notes and effects       |
-| `src/main.ts`                  | Screens, inputs, lifecycle, fullscreen and HUD          |
-| `src/style.css`                | Portrait layout, menus, safe areas and touch controls   |
-| `MASTER_DESIGN.md`             | Stable project-wide design and production-art direction |
-| `PROTOTYPE_SPEC.md`            | Neutral prototype scope and tunable defaults            |
-| `IMPLEMENTATION_STATUS.md`     | Durable development and verification checkpoint         |
-
-Attack entries specify **impact beats**, lane, width, kind and travel time. Fast
-notes have advance lane warnings. The seven main phrases use flanking resonant
-pairs, uneven one/two/three-note bursts, mirrored walls, wide waves and accelerated
-reprises; the final phrase provides another counterattack opportunity.
-
-## Prototype limits and next playtest
-
-- All art is procedural geometry and all sounds are synthesized specifically for
-  this prototype. No Everhood assets, music or charts are used.
-- Local records/settings are best effort when storage is blocked or cleared.
-- The manifest supports portrait standalone launch, but this is not an offline
-  PWA; there is no service worker or stale asset cache to manage.
-- Real iOS/Android hardware, audio latency, thumb comfort and thermal performance
-  need phone playtesting. Emulated mobile testing does not establish those.
-- The locally tested production build still needs its first hosted Pages check
-  after the user's push. No commit or push is performed automatically.
-- Three.js is the largest bundle (~133 KB compressed); geometry and pixel density
-  are kept modest. Final effects, music production and difficulty tuning come
-  after feedback on the controls and core loop.
+Start with `docs/MASTER_DESIGN.md` and `docs/PROJECT_STATUS.md`.

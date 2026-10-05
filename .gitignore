@@ -1,7 +1,18 @@
-node_modules/
+# Godot
+.godot/
+*.tmp
+*.translation
+
+# Exports / builds
+build/
 dist/
-test-results/
-playwright-report/
-.vite/
-*.local
-*.log
+exports/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local scratch
+scratch/

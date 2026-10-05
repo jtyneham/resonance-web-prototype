@@ -61,7 +61,7 @@ the archive repository is retained.
 
 Current deployed path:
 
-https://jtyneham.github.io/resonance/
+https://jtyneham.github.io/resonance-web-prototype/
 
 Repository renaming may affect deployment configuration or URLs. Preserve the
 prototype for reference, but do not let its hosting requirements constrain the

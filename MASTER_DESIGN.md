@@ -167,29 +167,30 @@ production playtests.
 
 ### 3.5 Repository reset strategy
 
-The existing repository is treated as the **web-prototype / research archive**.
+The repository strategy is locked:
 
-The intended production migration is:
+- the current browser repository becomes **`jtyneham/resonance-web-prototype`**
+- its history is preserved as pre-production R&D
+- branch **`web-prototype-final`** preserves the final browser-era checkpoint
+- a fresh **`jtyneham/resonance`** repository becomes the canonical Godot
+  production project
+- production history starts cleanly rather than carrying the browser implementation
+  forward as technical baggage
+
+Migration order:
 
 1. preserve the current repository and its history
-2. mark a final browser-prototype checkpoint before destructive restructuring
-3. create a clean Godot production repository or clean production root
-4. bring forward only approved design references, art sources, audio sources and
-   lessons that the new game actually needs
-5. do not drag browser-specific build infrastructure, experimental labs or obsolete
+2. preserve the final browser checkpoint
+3. rename the current repository to `resonance-web-prototype`
+4. create a fresh `resonance` repository
+5. initialize Godot 4.x / GDScript production there
+6. bring forward only approved design references, art sources, audio sources and
+   distilled prototype lessons
+7. do not copy browser-specific build infrastructure, experimental labs or obsolete
    renderer code into the production architecture by default
 
-Repository strategy is now locked:
-
-- preserve the current repository as the historical browser prototype
-- preserve a final `web-prototype-final` branch before migration
-- rename the current repository to `resonance-web-prototype`
-- keep the prototype deployable for historical/reference testing where practical
-- create a fresh `jtyneham/resonance` repository for Godot production
-- migrate only approved canon, production references and distilled prototype lessons
-
-The repository rename and creation are account-level migration operations and must
-not destroy the preserved prototype history.
+The web prototype may remain playable for historical comparison. Its hosting
+requirements must not constrain the Godot production project.
 
 ---
 

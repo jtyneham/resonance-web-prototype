@@ -1,4 +1,12 @@
-# Resonance Web Prototype
+# Resonance
+
+> **ARCHIVE / MIGRATION NOTICE — 2026-10-05**  
+> This repository's `main` branch is the original browser prototype and pre-production R&D for Resonance.  
+> The final preserved checkpoint is `web-prototype-final`.  
+> A stripped Godot production starting tree is prepared on `godot-production-seed`.  
+> The agreed end state is to rename this repository to `resonance-web-prototype` and create a fresh `jtyneham/resonance` repository for active Godot production.
+
+Web Prototype
 
 > **Status: preserved pre-production prototype / R&D archive**
 >

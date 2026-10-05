@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/resonance/',
+  base: '/resonance-web-prototype/',
   build: {
     rollupOptions: {
       input: {

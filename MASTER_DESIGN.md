@@ -179,9 +179,17 @@ The intended production migration is:
 5. do not drag browser-specific build infrastructure, experimental labs or obsolete
    renderer code into the production architecture by default
 
-Renaming, archiving or replacing the current GitHub repository is a separate
-migration operation and should be done deliberately so historical links and the
-existing GitHub Pages prototype are not lost accidentally.
+Repository strategy is now locked:
+
+- preserve the current repository as the historical browser prototype
+- preserve a final `web-prototype-final` branch before migration
+- rename the current repository to `resonance-web-prototype`
+- keep the prototype deployable for historical/reference testing where practical
+- create a fresh `jtyneham/resonance` repository for Godot production
+- migrate only approved canon, production references and distilled prototype lessons
+
+The repository rename and creation are account-level migration operations and must
+not destroy the preserved prototype history.
 
 ---
 
@@ -873,7 +881,10 @@ Status after this document:
 - portrait combat geometry: locked
 - six-boss launch-scope target: locked
 - repository migration direction: locked
-- physical repository migration: not yet executed
+- final web-prototype checkpoint branch: created
+- old-repo target name: `resonance-web-prototype`
+- new production-repo target name: `resonance`
+- account-level rename / new-repository creation: pending
 
 Exit criterion:
 
@@ -1306,8 +1317,8 @@ Where relevant verify:
 - exact Godot encounter-resource schema
 - exact automated-test framework
 - Dancer animation pipeline
-- whether the current GitHub repository is renamed/archived or retained under its
-  present name after the Godot repository is created
+- exact long-term hosting/deployment policy for the preserved web prototype after
+  the repository rename
 
 ---
 
@@ -1318,8 +1329,10 @@ handoffs.
 
 Next production action:
 
-**complete the repository migration decision and bootstrap the clean Godot project
-only after preserving a final browser-prototype checkpoint.**
+**complete the two remaining account-level repository operations: rename the
+prototype repository to `resonance-web-prototype`, create the new
+`jtyneham/resonance` repository, then promote the prepared Godot production seed
+into the new repository.**
 
 Do not resume the old Conductor LibreSprite migration as the automatic next task.
 It remains useful art-production work, but the project-wide Godot foundation now
